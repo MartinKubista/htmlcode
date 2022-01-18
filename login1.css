@@ -1,0 +1,19 @@
+body{
+    text-align: center; 
+    background-color:grey;
+
+}
+
+.formular{
+    margin: auto;
+    display: inline-block;
+    text-align: center;    
+    border: solid 1px;
+    background-color:khaki;
+}
+.container{
+   
+margin-top:0.5%;
+display: inline-block;
+text-align: center;    
+}

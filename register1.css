@@ -1,0 +1,19 @@
+body{
+    text-align: center; 
+    background-color:grey;
+
+}
+.container{
+    margin: auto;
+    display: inline-block;
+    text-align: left;    
+    border: solid 1px;
+    background-color:khaki;
+}
+h1{
+    text-align: center;   
+}
+.klasap{
+    text-align: center;  
+
+}
