@@ -1,0 +1,51 @@
+.main-div-search-bar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #ccc;
+    height: 400px;
+    text-align: center;
+    width: 100%;
+}
+.search-bar{
+    width: 100%;
+    max-width: 500px;
+    background-color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    border-radius: 60px;
+    padding: 10px 20px;
+    outline: solid 1px;
+    margin: 5px 25px;
+    height: 35px;
+    padding-right: 6px;
+    color: darkgrey;
+    text-align: center;
+
+
+}
+.search-bar input{
+    background: transparent;
+    flex: 1;
+    border: 0;
+    outline: none;
+    padding: 24px 0px;
+    font-size: 20px;
+    color: #ccc;
+    width: 200px;
+
+}
+.search-bar material-symbols-outlined.md-48{
+    font-size: 20px;
+}
+.search-bar button{
+    border: 0;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    background-color: #c19237;
+}
+.find-button{
+    padding-bottom: 0px;
+}
