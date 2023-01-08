@@ -45,7 +45,7 @@ h2{
 }
 .textarea-postup{
     border: 2px solid #ccc;
-    height: 400px;
+    height: 200px;
     width: 100%;
     padding-left: 1%;
     margin-top: 1%;
@@ -92,21 +92,30 @@ div #display_image{
 }
 small{
     color: grey;
-}
-.suroviny_small{
-    padding-top: 5px;
-    margin-left: 25px;
+    margin-left: 20px;
 }
 input[type=checkbox] {
     accent-color: #9f772d;
   }
 
-.addBtn{
-    padding: 4px 10px;
-    border-color: #9f772d;
+.addBtn,
+.addBtn1{
+    padding: 4px 5px;
+    border: none;
     margin-left: 20px;
+    display: block;
+    position: relative;
+    background-color: #9f772d;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    width: 90px;
+    padding: 10px 0px;
+    border-radius: 4px;
+    cursor: pointer;
 }
-.list .li_input {
+.list .li_input,
+.list1 .li_input {
     counter-increment: step-counter;
     overflow: hidden;
     position: relative;
@@ -148,6 +157,7 @@ input[type=checkbox] {
     float: left;
     width: 20%;
     padding: 0 5px;
+    
 }
 
 .formHolder .col.big {
@@ -157,14 +167,16 @@ input[type=checkbox] {
 
 
 
-.listHolder li {
+.listHolder li,
+.listHolder1 li {
     counter-increment: step-counter;
     overflow: hidden;
     padding: 0 0 20px 30px;
     position: relative;
 }
 
-.listHolder li:before {
+.listHolder li:before,
+.listHolder1 li:before{
     content: counter(step-counter);
     background: #8f6a29;
     color: #fff;
@@ -176,17 +188,20 @@ input[type=checkbox] {
     left: 0;
 }
 
-.listHolder .listName {
+.listHolder .listName, 
+.listHolder1 .listName {
     float: left;
 }
 
-.listHolder .fa-solid.fa-trash {
+.listHolder .fa-solid.fa-trash,
+.listHolder1 .fa-solid.fa-trash {
     float: right;
     margin: 0 0 0 20px;
 }
 .input_suroviny{
     border: 2px solid #ccc;
-
+    padding-left: 2%;
+    margin-bottom: 5px;
 }
 .input_suroviny:active,
 .input_suroviny:hover{
@@ -196,7 +211,8 @@ input[type=checkbox] {
 input[type="file"]{
     display: none;
 }
-.fa-solid.fa-upload{
+.fa-solid.fa-upload,
+.fa-regular.fa-plus{
     padding-right: 10px;
 }
 .file-input1{
@@ -210,6 +226,8 @@ input[type="file"]{
     padding: 10px 0px;
     border-radius: 4px;
     cursor: pointer;
+    margin-left: 20px;
+    margin-top: 10px;
 }
 #images{
     width: 90%;
@@ -232,5 +250,4 @@ figcaption{
     margin-top: 0.5vmin;
 
 }
-
 

@@ -3,6 +3,7 @@
 <head>
     <link href="../css/add-recipe.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/fonts.css">  
+    <link rel="shortcut icon" href="#">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
     <script src="https://kit.fontawesome.com/cfb876ecbd.js" crossorigin="anonymous"></script>
     <style> 
@@ -11,19 +12,21 @@
          margin-left: 10px;
          border: none;
             }  
-      .fa-upload{
+      .fa-upload,
+      .fa-plus{
          background-color: #9f772d;
          color: #fff;
       }
     </style>
 </head>
 <main>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <?php
 require_once('../scripts/connection.php');
 include('../parts/hlava.php');
 ?>
     <div class="margin">
-        <form action="../scripts/add_recipe.php" method="post">
+        <form action="../scripts/add-recipe-script.php" method="post">
             <div class="title-1">
                 <h2>Úvod</h2>
             </div>
@@ -50,43 +53,51 @@ include('../parts/hlava.php');
                      <span id="addInput1"  class="span-suroviny" ></span>
                         <button class="fa-solid fa-trash"></button>
                      </li>-->
+                  
                </ul >
             </div>
             <div class="formHolder">
                <div class="col big">
-                  <input class="input_suroviny" type="text" id="addInput">
+                  <input placeholder="Zadaj surovinu." class="input_suroviny" type="text" id="addInput">
+                  <input placeholder="Zadaj množstvo." class="input_suroviny" type="text" id="addInput2">
+                  <input placeholder="Zadaj jednotku." class="input_suroviny" type="text" id="addInput3">
                </div>
                <div class="col">
-                  <button type="button" class="addBtn" id="addBtn" >Pridaj</button>
+                  <button type="button" class="addBtn" id="addBtn" ><i class="fa-regular fa-plus"></i>Pridaj</button>
                </div>
                <script src="../scripts/add_part_of_food.js"></script>
-            </div>
-            <div class="suroviny_small">
-               <small class="small">Zadajte surovinu, množstvo a jednotku.</small>
             </div>
             </div>
             <br>
             <br>
             <hr>
-            <div class="title">
-               <h2>Postup receptu</h2>
-            </div>
-            <div class="label-input-group">
-            <div class="formHolder1">
-               <div class="col1 big1">
-                  <textarea placeholder="Sem napíšte postup receptu" class="textarea-postup" id="addInput1" name="postup[]" cols="100" rows="5"></textarea>
-                  <div id="images"></div>
-                  <input type="file" id="file-input" accept="image/png, image/jpg, image/jpeg" onchange="preview()" multiple>
-                  <label for="file-input" class="file-input1">
-                     <i class="fa-solid fa-upload"></i>Vyber obrázky                
-                 </label>
-                 <small id="num-of-files">Zatiať si nevybral žiadne obrázky</small>
-               </div>
-               
-            </div>
-               <br>
-               <br>
-            </div>
+                        <div class="title">
+                           <h2>Postup receptu</h2>
+                        </div>
+                        <div class="label-input-group">
+                        <div class="listHolder1">
+                              <ul class="list1" id="list1">
+                                 <!--  <li class="li_input" id="li_input">
+                                 <span id="addInput1"  class="span-suroviny" ></span>
+                                    <button class="fa-solid fa-trash"></button>
+                                 </li>-->
+                           </ul >
+                        </div>
+                        <div class="formHolder1">
+                              <textarea placeholder="Sem napíšte bod receptu" class="textarea-postup" id="addInput1" name="postup[]" cols="100" rows="5"></textarea>
+                              <div class="col">
+                                 <button type="button" class="addBtn1" id="addBtn1" ><i class="fa-regular fa-plus"></i>Pridaj</button>
+                              </div>
+                              <div id="images"></div>
+                              <input type="file" id="file-input" accept="image/png, image/jpg, image/jpeg" onchange="preview()" multiple>
+                              <label for="file-input" class="file-input1">
+                                 <i class="fa-solid fa-upload"></i>Vyber obrázky                
+                           </label>
+                           <small id="num-of-files">Zatiať si nevybral žiadne obrázky</small>           
+                        </div>
+                           <br>
+                           <br>
+                        </div>
             <br>
             <br>
             <hr>
@@ -96,6 +107,10 @@ include('../parts/hlava.php');
             <div class="label-input-group">
                 <div class="typ-jedla"></div>
                     <lable class="kategoria-subtitle">Typ jedla</label>
+                            <div id="polievky" onclick="">
+                               <input type="checkbox" name="tag[]" value="polievky" id="polievky">
+                               <label for="polievky"><b>Polievky</b></label> 
+                            </div>
                             <div id="cestoviny" onclick="">
                                <input type="checkbox" name="tag[]" value="cestoviny" id="cestoviny">
                                <label for="cestoviny"><b>Cestoviny</b></label> 
@@ -104,93 +119,45 @@ include('../parts/hlava.php');
                                <input type="checkbox" name="tag[]" value="jedla-z-hub" id="jedla-z-hub">
                                <label for="jedla-z-hub"><b>Jedlá z húb</b></label> 
                             </div>
-                            <div id="mucne-jedla" onclick="">
-                               <input type="checkbox" name="tag[]" value="mucne-jedla" id="mucne-jedla">
-                               <label for="mucne-jedla"><b>Múčne-jedlá</b></label> 
+                            <div id="mäsite-jedla" onclick="">
+                               <input type="checkbox" name="tag[]" value="mäsite-jedla" id="mäsite-jedla">
+                               <label for="mäsite-jedla"><b>Mäsité jedlá</b></label> 
+                            </div>
+                            <div id="bezmäsite-jedla" onclick="">
+                               <input type="checkbox" name="tag[]" value="bezmäsite-jedla" id="bezmäsite-jedla">
+                               <label for="bezmäsite-jedla"><b>Bezmäsité jedlá</b></label> 
+                            </div>
+                            <div id="jedla-z-ryb" onclick="">
+                               <input type="checkbox" name="tag[]" value="jedla-z-ryb" id="jedla-z-ryb">
+                               <label for="jedla-z-ryb"><b>Jedlá z rýb</b></label> 
+                            </div>
+                            <div id="kolace-a-dezerty" onclick="">
+                               <input type="checkbox" name="tag[]" value="kolace-a-dezerty" id="kolace-a-dezerty">
+                               <label for="kolace-a-dezerty"><b>Koláče a dezerty</b></label> 
+                            </div>
+                            <div id="torty" onclick="">
+                               <input type="checkbox" name="tag[]" value="torty" id="torty">
+                               <label for="torty"><b>Torty</b></label> 
                             </div>
                             <div id="ovocne-jedla" onclick="">
                                <input type="checkbox" name="tag[]" value="ovocne-jedla" id="ovocne-jedla">
-                               <label for="ovocne-jedla"><b>Ovocné-jedlá</b></label> 
-                            </div>
-                            <div id="pizza" onclick="">
-                               <input type="checkbox" name="tag[]" value="pizza" id="pizza">
-                               <label for="pizza"><b>Pizza</b></label> 
+                               <label for="ovocne-jedla"><b>Ovocné jedlá</b></label> 
                             </div>
                             <div id="zeleninove-jedla" onclick="">
                                <input type="checkbox" name="tag[]" value="zeleninove-jedla" id="zeleninove-jedla">
-                               <label for="zeleninove-jedla"><b>Zeleninové-jedlá</b></label> 
-                            </div>
-                            <div id="strukoviny" onclick="">
-                               <input type="checkbox" name="tag[]" value="strukoviny" id="strukoviny">
-                               <label for="strukoviny"><b>Strukoviny</b></label> 
-                            </div>
-                            <br>
-
-
-                        <lable class="chlieb-a-pecivo">Aký je to chod?</label>
-                            <div id="cestoviny" onclick="">
-                               <input type="checkbox" name="tag[]" value="chlieb-a-pecivo" id="chlieb-a-pecivo">
-                               <label for="chlieb-a-pecivo"><b>Chlieb a pečivo</b></label> 
-                            </div>
-                            <div id="desiata" onclick="">
-                               <input type="checkbox" name="tag[]" value="desiata" id="desiata">
-                               <label for="desiata"><b>Desiata</b></label> 
-                            </div>
-                            <div id="dezert" onclick="">
-                               <input type="checkbox" name="tag[]" value="dezert" id="dezert">
-                               <label for="dezert"><b>Dezert</b></label> 
-                            </div>
-                            <div id="hlavne-jedla" onclick="">
-                               <input type="checkbox" name="tag[]" value="hlavne-jedla" id="hlavne-jedla">
-                               <label for="hlavne-jedla"><b>Hlavné jedlá</b></label> 
+                               <label for="zeleninove-jedla"><b>Zeleninové jedlá</b></label> 
                             </div>
                             <div id="natierky" onclick="">
                                <input type="checkbox" name="tag[]" value="natierky" id="natierky">
                                <label for="natierky"><b>Nátierky</b></label> 
                             </div>
-                            <div id="polievky" onclick="">
-                               <input type="checkbox" name="tag[]" value="zpolievky" id="polievky">
-                               <label for="polievky"><b>Polievky</b></label> 
-                            </div>
-                            <div id="predjedla" onclick="">
-                               <input type="checkbox" name="tag[]" value="predjedla" id="predjedla">
-                               <label for="predjedla"><b>Predjedlá</b></label> 
-                            </div>
-                            <div id="ranajky" onclick="">
-                               <input type="checkbox" name="tag[]" value="ranajky" id="ranajky">
-                               <label for="ranajky"><b>Raňajky</b></label> 
-                            </div>
-                            <div id="salaty" onclick="">
-                               <input type="checkbox" name="tag[]" value="salaty" id="salaty">
-                               <label for="salaty"><b>Šaláty</b></label> 
-                            </div>
-                            <div id="slane-jedla" onclick="">
-                               <input type="checkbox" name="tag[]" value="slane-jedla" id="slane-jedla">
-                               <label for="slane-jedla"><b>Slané jedlá</b></label> 
+                            <div id="napoje" onclick="">
+                               <input type="checkbox" name="tag[]" value="napoje" id="napoje">
+                               <label for="napoje"><b>Nápoje</b></label> 
                             </div>
                             <br>
 
-                        <lable class="chlieb-a-pecivo">Obsahuje mäso?</label>
-                            <div id="bezmäsite-jedla" onclick="">
-                               <input type="checkbox" name="tag[]" value="bezmäsite-jedla" id="bezmäsite-jedla">
-                               <label for="bezmäsite-jedla"><b>Bezmäsité jedlá</b></label> 
-                            </div>
-                            <div id="bravcove-mäso" onclick="">
-                               <input type="checkbox" name="tag[]" value="bravcove-mäso" id="bravcove-mäso">
-                               <label for="bravcove-mäso"><b>Bravčové mäso</b></label> 
-                            </div>
-                            <div id="hovädzie-mäso" onclick="">
-                               <input type="checkbox" name="tag[]" value="hovädzie-mäso" id="hovädzie-mäso">
-                               <label for="hovädzie-mäso"><b>Hovädzie mäso</b></label> 
-                            </div>
-                            <div id="kuracie-mäso" onclick="">
-                               <input type="checkbox" name="tag[]" value="kuracie-mäso" id="kuracie-mäso">
-                               <label for="kuracie-mäso"><b>Kuracie-mäso</b></label> 
-                            </div>
-                            <div id="ryby" onclick="">
-                               <input type="checkbox" name="tag[]" value="ryby" id="ryby">
-                               <label for="ryby"><b>Ryby</b></label> 
-                            </div>
+
                 </div>
                 <br>
                 <br>
@@ -239,7 +206,7 @@ include('../parts/hlava.php');
                   <p>
                   <input class="input-uvod_podrobnosti" type="text" name="pocet-porci" id="pocet-porci">
                   <br>
-                  <small class="small">Zadaj počet porcií tohto jedla (pri použití gramáže, ktorú uvádzaš v tomto recepte)</small>
+                  <small class="small">Zadaj počet porcií tohto jedla (pri použití gramáže, ktorú uvádzate v tomto recepte)</small>
                </div>
                <br>
                <hr>
