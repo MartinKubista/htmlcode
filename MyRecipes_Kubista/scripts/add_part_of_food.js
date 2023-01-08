@@ -9,12 +9,14 @@ src="https://code.jquery.com/jquery-3.6.0.min.js"
 const array_suroviny = [];
 const array_mnozstvo = [];
 const array_jednotka = [];
+const array_postup = [];
 
-function sendArrayToPHP(array_suroviny, array_mnozstvo, array_jednotka) {
+
+function sendArrayToPHP(array_suroviny, array_mnozstvo, array_jednotka, array_postup, nazov_receptu, popis_receptu, options, priprava_v_minutach, varenie_pecenie, teplota, pocet_porci) {
   $.ajax({
     url: '../scripts/add-recipe-script.php',
     type: 'POST',
-    data: { array_suroviny: array_suroviny, array_mnozstvo: array_mnozstvo,  array_jednotka: array_jednotka},
+    data: { array_suroviny: array_suroviny, array_mnozstvo: array_mnozstvo,  array_jednotka: array_jednotka, array_postup: array_postup, nazov_receptu: nazov_receptu, popis_receptu: popis_receptu, options: options, priprava_v_minutach: priprava_v_minutach, varenie_pecenie: varenie_pecenie, teplota: teplota, pocet_porci: pocet_porci },
     success: function(response) {
       console.log(response);
     }
@@ -33,13 +35,38 @@ submitButton.addEventListener('click', () => {
   array_jednotka.push(input3.value);
 });
 
+const submitButton1 = document.getElementById('addBtn1');
+submitButton1.addEventListener('click', () => {
+  const input1 = document.getElementById('addInput1');
+  array_postup.push(input1.value);
+});
+
+
 
 
 const form = document.querySelector('form');
 form.addEventListener('submit', (event) => {
   event.preventDefault();
-  sendArrayToPHP(array_suroviny, array_mnozstvo, array_jednotka);
+  const nazov_receptu = document.getElementById('nazov-receptu').value;
+  const popis_receptu = document.getElementById('popis-receptu').value;
+  const priprava_v_minutach = document.getElementById('priprava-v-minutach').value;
+  const varenie_pecenie = document.getElementById('varenie-pecenie').value;
+  const teplota = document.getElementById('teplota').value;
+  const pocet_porci = document.getElementById('pocet-porci').value;
+  let option;
+  const options = [];
+  const optionElements = document.querySelectorAll('input[type="checkbox"]');
+  optionElements.forEach((option) => {
+  if (option.checked) {
+    options.push(option.value);
+  }
 });
+  sendArrayToPHP(array_suroviny, array_mnozstvo, array_jednotka, array_postup, nazov_receptu, popis_receptu, options, priprava_v_minutach, varenie_pecenie, teplota, pocet_porci);
+
+});
+
+
+
 
 function addLists() {
   if (addInput.value === '') {

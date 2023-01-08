@@ -26,7 +26,7 @@ require_once('../scripts/connection.php');
 include('../parts/hlava.php');
 ?>
     <div class="margin">
-        <form action="../scripts/add-recipe-script.php" method="post">
+        <form action="../scripts/add-recipe-script.php" method="POST">
             <div class="title-1">
                 <h2>Úvod</h2>
             </div>
@@ -65,7 +65,6 @@ include('../parts/hlava.php');
                <div class="col">
                   <button type="button" class="addBtn" id="addBtn" ><i class="fa-regular fa-plus"></i>Pridaj</button>
                </div>
-               <script src="../scripts/add_part_of_food.js"></script>
             </div>
             </div>
             <br>
@@ -88,7 +87,7 @@ include('../parts/hlava.php');
                               <div class="col">
                                  <button type="button" class="addBtn1" id="addBtn1" ><i class="fa-regular fa-plus"></i>Pridaj</button>
                               </div>
-                              <div id="images"></div>
+                              <div id="images1"></div>
                               <input type="file" id="file-input" accept="image/png, image/jpg, image/jpeg" onchange="preview()" multiple>
                               <label for="file-input" class="file-input1">
                                  <i class="fa-solid fa-upload"></i>Vyber obrázky                
@@ -108,51 +107,51 @@ include('../parts/hlava.php');
                 <div class="typ-jedla"></div>
                     <lable class="kategoria-subtitle">Typ jedla</label>
                             <div id="polievky" onclick="">
-                               <input type="checkbox" name="tag[]" value="polievky" id="polievky">
+                               <input type="checkbox" name="options[]" value="polievky" id="polievky">
                                <label for="polievky"><b>Polievky</b></label> 
                             </div>
                             <div id="cestoviny" onclick="">
-                               <input type="checkbox" name="tag[]" value="cestoviny" id="cestoviny">
+                               <input type="checkbox" name="options[]" value="cestoviny" id="cestoviny">
                                <label for="cestoviny"><b>Cestoviny</b></label> 
                             </div>
                             <div id="jedla-z-hub" onclick="">
-                               <input type="checkbox" name="tag[]" value="jedla-z-hub" id="jedla-z-hub">
+                               <input type="checkbox" name="options[]" value="jedla-z-hub" id="jedla-z-hub">
                                <label for="jedla-z-hub"><b>Jedlá z húb</b></label> 
                             </div>
                             <div id="mäsite-jedla" onclick="">
-                               <input type="checkbox" name="tag[]" value="mäsite-jedla" id="mäsite-jedla">
+                               <input type="checkbox" name="options[]" value="mäsite-jedla" id="mäsite-jedla">
                                <label for="mäsite-jedla"><b>Mäsité jedlá</b></label> 
                             </div>
                             <div id="bezmäsite-jedla" onclick="">
-                               <input type="checkbox" name="tag[]" value="bezmäsite-jedla" id="bezmäsite-jedla">
+                               <input type="checkbox" name="options[]" value="bezmäsite-jedla" id="bezmäsite-jedla">
                                <label for="bezmäsite-jedla"><b>Bezmäsité jedlá</b></label> 
                             </div>
                             <div id="jedla-z-ryb" onclick="">
-                               <input type="checkbox" name="tag[]" value="jedla-z-ryb" id="jedla-z-ryb">
+                               <input type="checkbox" name="options[]" value="jedla-z-ryb" id="jedla-z-ryb">
                                <label for="jedla-z-ryb"><b>Jedlá z rýb</b></label> 
                             </div>
                             <div id="kolace-a-dezerty" onclick="">
-                               <input type="checkbox" name="tag[]" value="kolace-a-dezerty" id="kolace-a-dezerty">
+                               <input type="checkbox" name="options[]" value="kolace-a-dezerty" id="kolace-a-dezerty">
                                <label for="kolace-a-dezerty"><b>Koláče a dezerty</b></label> 
                             </div>
                             <div id="torty" onclick="">
-                               <input type="checkbox" name="tag[]" value="torty" id="torty">
+                               <input type="checkbox" name="options[]" value="torty" id="torty">
                                <label for="torty"><b>Torty</b></label> 
                             </div>
                             <div id="ovocne-jedla" onclick="">
-                               <input type="checkbox" name="tag[]" value="ovocne-jedla" id="ovocne-jedla">
+                               <input type="checkbox" name="options[]" value="ovocne-jedla" id="ovocne-jedla">
                                <label for="ovocne-jedla"><b>Ovocné jedlá</b></label> 
                             </div>
                             <div id="zeleninove-jedla" onclick="">
-                               <input type="checkbox" name="tag[]" value="zeleninove-jedla" id="zeleninove-jedla">
+                               <input type="checkbox" name="options[]" value="zeleninove-jedla" id="zeleninove-jedla">
                                <label for="zeleninove-jedla"><b>Zeleninové jedlá</b></label> 
                             </div>
                             <div id="natierky" onclick="">
-                               <input type="checkbox" name="tag[]" value="natierky" id="natierky">
+                               <input type="checkbox" name="options[]" value="natierky" id="natierky">
                                <label for="natierky"><b>Nátierky</b></label> 
                             </div>
                             <div id="napoje" onclick="">
-                               <input type="checkbox" name="tag[]" value="napoje" id="napoje">
+                               <input type="checkbox" name="options[]" value="napoje" id="napoje">
                                <label for="napoje"><b>Nápoje</b></label> 
                             </div>
                             <br>
@@ -167,12 +166,11 @@ include('../parts/hlava.php');
                     
                 </div>
                 <div class="profile-pic-div">
-                <div id="images"></div>
-                  <input type="file" id="file-input1" accept="image/png, image/jpg">
+                  <input type="file" id="file-input1" accept="image/*" onchange="preview2()" multiple="false" >
                   <label for="file-input" class="file-input1">
                      <i class="fa-solid fa-upload"></i>Vyber obrázok               
                  </label>
-                  <script src="../scripts/add_image.js"></script>
+                 <div id="images2"></div>
                 </div>   
                 <br>
                <br>
@@ -220,4 +218,5 @@ include('../parts/hlava.php');
 
     </div>
 </main>
+<script src="../scripts/add_part_of_food.js"></script>
 <script src="../scripts/postup_receptu.js"></script>
