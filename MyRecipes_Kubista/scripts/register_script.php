@@ -32,6 +32,12 @@ if (!preg_match("/[0-9]/", $password)) {
     header('Location: ../pages/register.php?message=Heslo musi obsahovat aspon jeden ciselny znak');
 }
 
+$_SESSION['em'] = $_POST['email'];
+$_SESSION['user'] = $_POST['name'];
+$_SESSION['pass'] = $_POST['password'];
+
+
+
 if($_POST["password"] == $_POST["password-r"]){
     $passwordAreSame = true;
 }
@@ -51,18 +57,22 @@ else{
 
 $sql_e = "SELECT * FROM users WHERE email='$email'";
 $res_e = mysqli_query($conn, $sql_e);
-
+$sql_u = "SELECT * FROM users WHERE name='$username'";
+$res_u = mysqli_query($conn, $sql_u);
 
 
 if(mysqli_num_rows($res_e) > 0){
     $usernameOrEmailAlreadyExists = true;
     header('Location: ../pages/register.php?message=Email uz bol pouzity');
 }
-
+if(mysqli_num_rows($res_u) > 0){
+    $usernameOrEmailAlreadyExists = true;
+    header('Location: ../pages/register.php?message=Uzivatelske meno je uz obsadene');
+}
 if($isEmpty == false && $hasPasswordCertainLength && $hasPasswordAtLeastOneNumber == true && $passwordAreSame == true && $usernameOrEmailAlreadyExists == false){
-    $hash = md5($_POST["password"]);
+    //$hash = md5($_POST["password"]);
     $sql = "INSERT INTO users (name, email, password) 
-    VALUES('$username', '$email', '$hash')";
+    VALUES('$username', '$email', '$password')";
     if ($conn->query($sql) == true){       
         header('Location: ../pages/login.php?message=Registracia bola uspesna');
     }

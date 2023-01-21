@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../css/fonts.css">  
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-
+    <link rel="stylesheet" href="../css/login.css">   
 
 </head>
 <html>
@@ -18,7 +18,7 @@ include('../parts/hlava.php');
 <body>
 <?php $message = isset($_GET["message"]) ? $_GET["message"] : "";?>
     <div class="main-div-register">
-   <div class="container">
+   <div class="form-container">
         <div class="padding-setting">
             <div class="form login">
                 <span class="title">Registrácia</span>

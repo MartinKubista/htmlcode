@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    background-color: white;
+    /*background-color: white;*/
 }
 .main-div{
     display: flex;
@@ -22,7 +22,7 @@
     display: flex;
     align-items: center;
     margin-left: 10px;
-    border: 1px solid darkgrey;
+    /*border: 1px solid darkgrey;*/
     margin-right:10px;
     cursor: pointer;
     padding: 0px;
@@ -78,7 +78,7 @@
 }
 
 .main-div-new-recipe{
-    border: 1px solid darkgrey;
+    /*border: 1px solid darkgrey;*/
     cursor: pointer;
     padding: 0px;
     display: flex;

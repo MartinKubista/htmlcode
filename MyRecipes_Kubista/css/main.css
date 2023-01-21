@@ -1,0 +1,395 @@
+.error{
+    margin-bottom: 3%;
+    background-color: red;
+    color: white;
+    border-radius: 12px;
+    max-width: 285px;
+    padding: 1%;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.title{
+    margin: 2%;
+}
+
+/* grid */
+
+.grid-container{
+    display: grid;
+    width: 90%;
+    margin: auto;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;  
+    margin-bottom: 2%;
+}
+
+.grid-item{
+    border: 2px solid #60cea4;
+    border-radius: 10px;
+    transition: all .5s ease-in-out; 
+    position: relative;
+}
+
+.grid-item:hover {
+    box-shadow: 0 0 2px 1px #0da2ff;
+    transform: scale(1.05);
+}
+
+.news h2 a{
+    font-weight: bold;
+    color: black;
+}
+
+.article-content{
+    margin: 2%;
+    margin-bottom: 37px;
+}
+
+.grid-item .main-img{
+    width: 200px;
+    height: 135px;
+    object-fit: cover;
+}
+
+.time{
+    margin: 4% 0 2% 1%;
+    position: absolute;
+    bottom: 0;
+}
+
+.read-more{
+    float: right;
+    margin: 3%;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+/* recipe */
+
+.recipe-content{
+    margin: 2%;
+}
+
+.btn{
+    float: right;
+    margin-right: 3%;
+}
+
+.btn a{
+    color: white;
+}
+
+.recipe-content .main-img{
+    margin: 2.5% auto;
+    border-radius: 20px;
+    max-width: 800px;
+    display: block;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    font-size: 1.2rem;
+    margin-bottom: 2%;
+    background-color: #C19237;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    border-radius: 50px;
+    padding-top: 1%;
+}
+
+.popis p{
+    margin: auto;
+    margin-bottom: 2%;
+    display: flex;
+    text-align: center;
+    width: 50%;
+}
+
+.suroviny, .popis{
+    font-style: italic;
+}
+
+/* form postup */
+
+.postup-prace, .form-review, .profile{
+    margin: 3% auto; 
+    border: none;
+    border-radius: 20px;
+    width: 40%;
+    padding: 2%;
+}
+
+.postup-prace fieldset, .profile fieldset{
+    font-weight: bold;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 3%;
+    border: none;
+}
+
+.postup-prace button, .form-review button, .profile button{      
+    background: #0da2ff;
+    border: none;
+    color: white;
+    font-size: 1.4rem;
+    border-radius: 25px;
+    width: 100%;
+    padding: 7px;
+    cursor: pointer;
+    margin: 6% 0;
+}
+
+.postup-prace button:hover{
+    opacity: 0.9;
+}
+
+.postup-prace label{
+    font-weight: bold;
+}
+
+.postup-prace input, .postup-prace textarea, .form-review textarea{
+    width: 100%;
+    padding: 15px 0 8px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    background: none;
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid #adadad;
+    outline: none;
+}
+
+.postup-prace input:focus{
+    border-bottom: 2px solid #0da2ff;
+}
+
+.index-return button{
+    padding: 14px 30px;
+    font-weight: bold;
+    font-size: 1rem; 
+    font-family: revert;   
+    border-radius: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    background-color: #0da2ff;
+    border: none;
+    transition-duration: 0.8s;
+    box-shadow: 1px 2px 3px rgb(61, 61, 61);
+    display: flex;
+    margin: auto;
+    position: absolute;
+    top: 2%;
+    left: 2%;
+}
+
+.postup-prace{
+    margin-top: 5%;
+    float: left;
+}
+
+.btn-danger{
+    border-radius: 10px;
+    margin: 1%;
+}
+
+.pridavanie-postupu{
+    margin: 3%;
+    float: right;
+}
+
+.pridavanie-postupu img{
+    max-width: 450px;
+}
+
+.form-review{
+    width: 100%;
+}
+
+.form-review textarea{
+    border: solid #C19237;
+    padding: 5px;
+}
+
+.form-review button{
+    margin: 0;
+    width: 20%;
+    background-color: #C19237;
+}
+
+/* nav */
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  .topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .topnav .icon {
+    display: none;
+  }
+
+.review{
+    border-left: 6px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+.review p{
+    margin-left: 1%;
+    padding: 2px 0;
+}
+
+.new-recept{
+    padding: 0.5%;
+    border-radius: 10px;
+    margin-bottom: 1%;
+}
+
+.btn-warning{
+    border-radius: 10px;
+}
+
+.avatar{
+    width: 20%;
+    border-radius: 50%;
+    margin: 3%;
+}
+
+.forms{
+    display: flex;
+}
+
+.forms input{
+    border: none;
+}
+
+.profile{
+    margin-left: 5%;
+}
+
+.author{
+    border-radius: 50%;
+    width: 7%;
+}
+
+.created{
+    margin-left: 2%;
+}
+
+.photo{
+    max-width: 50px !important;
+    border-radius: 5px;
+    margin-left: 0.5%;
+}
+
+.review-author img, .review-author span{
+    margin: 1% 0.5%;
+}
+
+.btn-success, .btn-info{
+    min-width: 35px;
+}
+
+/* responsive */
+
+@media only screen and (max-width: 900px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    input{
+        min-width: 60px;
+    }
+    .grid{
+        font-size: 1rem;
+    }
+    .recipe-content .main-img{
+        max-width: 550px;
+    }
+    .postup-prace{
+        float: none;
+    }
+    .pridavanie-postupu{
+        float: none;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .grid{
+        display: block;
+        height: 60px;
+    }
+
+    .forms{
+        display: block;
+    }
+    .forms form{
+        margin: auto;
+    }
+    .profile button{
+        font-size: 1.1rem;
+    }
+
+    .postup-prace{
+        margin-top: 18%;
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .grid-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .recipe-content .main-img{
+        max-width: 450px;
+    }
+    .btn-success{
+        margin-bottom: 2%;
+    }
+    .form-review button{
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .main-div {
+        display: block !important;
+    }
+    .main-div-pad{
+        margin: auto !important;
+        display: flex !important;
+        width: 105px;
+    }
+    .sign_in{
+        margin-left: 2px !important; 
+    }
+    .profile{
+        width: 95%;
+    }
+    .recipe-content .main-img{
+        max-width: 270px;
+    }
+    .postup-prace{
+        width: 70%;
+    }
+    .pridavanie-postupu img{
+        max-width: 300px;
+    }
+}

@@ -12,11 +12,37 @@ const array_jednotka = [];
 const array_postup = [];
 
 
-function sendArrayToPHP(array_suroviny, array_mnozstvo, array_jednotka, array_postup, nazov_receptu, popis_receptu, options, priprava_v_minutach, varenie_pecenie, teplota, pocet_porci) {
+
+function preview() {
+  imageContainer.innerHTML = "";
+  numOfFiles.textContent = `${fileInput.files.length}
+  Files Selected`;
+
+  for (i of fileInput.files) {
+    let reader = new FileReader();
+    let figure = document.createElement("figure");
+    let figCap = document.createElement("figcaption");
+    figCap.innerHTML = i.name;
+    figure.appendChild(figCap);
+    reader.onload = () => {
+      let img = document.createElement("img");
+      img.setAttribute("src", reader.result);
+      figure.insertBefore(img, figCap);
+    };
+    imageContainer.appendChild(figure);
+    reader.readAsDataURL(i);
+  }
+}
+
+
+function sendArrayToPHP(array_suroviny, array_mnozstvo, array_jednotka, array_postup, nazov_receptu, popis_receptu, options,
+   priprava_v_minutach, varenie_pecenie, teplota, pocet_porci, imagesJSON) {
   $.ajax({
     url: '../scripts/add-recipe-script.php',
     type: 'POST',
-    data: { array_suroviny: array_suroviny, array_mnozstvo: array_mnozstvo,  array_jednotka: array_jednotka, array_postup: array_postup, nazov_receptu: nazov_receptu, popis_receptu: popis_receptu, options: options, priprava_v_minutach: priprava_v_minutach, varenie_pecenie: varenie_pecenie, teplota: teplota, pocet_porci: pocet_porci },
+    data: { array_suroviny: array_suroviny, array_mnozstvo: array_mnozstvo,  array_jednotka: array_jednotka, 
+      array_postup: array_postup, nazov_receptu: nazov_receptu, popis_receptu: popis_receptu, options: options, 
+      priprava_v_minutach: priprava_v_minutach, varenie_pecenie: varenie_pecenie, teplota: teplota, pocet_porci: pocet_porci, images: imagesJSON },
     success: function(response) {
       console.log(response);
     }
@@ -54,6 +80,7 @@ form.addEventListener('submit', (event) => {
   const teplota = document.getElementById('teplota').value;
   const pocet_porci = document.getElementById('pocet-porci').value;
   let option;
+  const imagesJSON = JSON.stringify(images);
   const options = [];
   const optionElements = document.querySelectorAll('input[type="checkbox"]');
   optionElements.forEach((option) => {
@@ -61,7 +88,9 @@ form.addEventListener('submit', (event) => {
     options.push(option.value);
   }
 });
-  sendArrayToPHP(array_suroviny, array_mnozstvo, array_jednotka, array_postup, nazov_receptu, popis_receptu, options, priprava_v_minutach, varenie_pecenie, teplota, pocet_porci);
+
+  sendArrayToPHP(array_suroviny, array_mnozstvo, array_jednotka, array_postup, nazov_receptu, popis_receptu, 
+    options, priprava_v_minutach, varenie_pecenie, teplota, pocet_porci, imagesJSON);
 
 });
 

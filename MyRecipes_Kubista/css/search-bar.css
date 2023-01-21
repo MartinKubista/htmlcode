@@ -3,7 +3,8 @@
     align-items: center;
     justify-content: center;
     border-bottom: 1px solid #ccc;
-    height: 400px;
+    /*height: 400px;*/
+    height: 250px;
     text-align: center;
     width: 100%;
 }

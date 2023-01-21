@@ -3,7 +3,7 @@ $servername = 'localhost';
 $username = 'root';
 $password = '';
 $database = 'myrecipes_kubista';
-
+$errors = array(); 
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);
@@ -12,4 +12,4 @@ $conn = new mysqli($servername, $username, $password, $database);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-?>
+?> 

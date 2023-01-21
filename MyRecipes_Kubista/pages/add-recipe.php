@@ -6,6 +6,8 @@
     <link rel="shortcut icon" href="#">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
     <script src="https://kit.fontawesome.com/cfb876ecbd.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css"> 
     <style> 
       .fa-trash {
          color: #9f772d;
@@ -21,12 +23,15 @@
 </head>
 <main>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <?php
-require_once('../scripts/connection.php');
-include('../parts/hlava.php');
+   require_once('../scripts/connection.php');
+   require_once ('../scripts/add_recipe.php');
+   include('../parts/hlava.php');
+
 ?>
     <div class="margin">
-        <form action="../scripts/add-recipe-script.php" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
             <div class="title-1">
                 <h2>Úvod</h2>
             </div>
@@ -46,14 +51,14 @@ include('../parts/hlava.php');
             <div class="title">
                <h2>Suroviny</h2>
             </div>
-            <div class="label-input-group">
+            <!-- <div class="label-input-group">
             <div class="listHolder">
-                  <ul class="list" id="list">
+                  <ul class="list" id="list">-->
                      <!--  <li class="li_input" id="li_input">
                      <span id="addInput1"  class="span-suroviny" ></span>
                         <button class="fa-solid fa-trash"></button>
                      </li>-->
-                  
+                <!--  
                </ul >
             </div>
             <div class="formHolder">
@@ -66,21 +71,28 @@ include('../parts/hlava.php');
                   <button type="button" class="addBtn" id="addBtn" ><i class="fa-regular fa-plus"></i>Pridaj</button>
                </div>
             </div>
+            </div>-->
+            <div class="label-input-group">
+                <p>
+                <textarea class="textarea-uvod" name="suroviny" id="suroviny" placeholder="Sem zadajte suroviny a k nim množstvo"></textarea>
             </div>
             <br>
             <br>
             <hr>
                         <div class="title">
                            <h2>Postup receptu</h2>
+                           Pridáva sa po vytvorení receptu 
                         </div>
+                        
+                        <!--
                         <div class="label-input-group">
                         <div class="listHolder1">
-                              <ul class="list1" id="list1">
+                              <ul class="list1" id="list1">-->
                                  <!--  <li class="li_input" id="li_input">
                                  <span id="addInput1"  class="span-suroviny" ></span>
                                     <button class="fa-solid fa-trash"></button>
                                  </li>-->
-                           </ul >
+                          <!-- </ul >
                         </div>
                         <div class="formHolder1">
                               <textarea placeholder="Sem napíšte bod receptu" class="textarea-postup" id="addInput1" name="postup[]" cols="100" rows="5"></textarea>
@@ -97,16 +109,16 @@ include('../parts/hlava.php');
                            <br>
                            <br>
                         </div>
-            <br>
+            <br>-->
             <br>
             <hr>
             <div class="title">
-                <h2>Kategórie receptu</h2>
+                <h2>Kategória receptu</h2>
             </div>
             <div class="label-input-group">
                 <div class="typ-jedla"></div>
                     <lable class="kategoria-subtitle">Typ jedla</label>
-                            <div id="polievky" onclick="">
+                            <!--<div id="polievky" onclick="">
                                <input type="checkbox" name="options[]" value="polievky" id="polievky">
                                <label for="polievky"><b>Polievky</b></label> 
                             </div>
@@ -153,7 +165,22 @@ include('../parts/hlava.php');
                             <div id="napoje" onclick="">
                                <input type="checkbox" name="options[]" value="napoje" id="napoje">
                                <label for="napoje"><b>Nápoje</b></label> 
-                            </div>
+                            </div>-->
+                           <select name="options" id="options">
+                              <option value="">Vyber typ jedla</option>
+                              <option value="Polievky">Polievky</option>
+                              <option value="Cestoviny">Cestoviny</option>
+                              <option value="Jedlá z húb">Jedlá z húb</option>
+                              <option value="Mäsité jedlá">Mäsité jedlá</option>
+                              <option value="Bezmäsité jedlá">Bezmäsité jedlá</option>
+                              <option value="Jedlá z rýb">Jedlá z rýb</option>
+                              <option value="Koláče a dezerty">Koláče a dezerty</option>
+                              <option value="Torty">Torty</option>
+                              <option value="Ovocné jedlá">Ovocné jedlá</option>
+                              <option value="Zeleninové jedlá">Zeleninové jedlá</option>
+                              <option value="Nátierky">Nátierky</option>
+                              <option value="Nápoje">Nápoje</option>
+                           </select>
                             <br>
 
 
@@ -166,12 +193,29 @@ include('../parts/hlava.php');
                     
                 </div>
                 <div class="profile-pic-div">
-                  <input type="file" id="file-input1" accept="image/*" onchange="preview2()" multiple="false" >
-                  <label for="file-input" class="file-input1">
-                     <i class="fa-solid fa-upload"></i>Vyber obrázok               
-                 </label>
-                 <div id="images2"></div>
-                </div>   
+               <input type="file" id="file-input1" accept="image/*" onchange="preview2()" multiple="false" name="recipes-images" value="">
+               <!--<label for="file-input" class="file-input1">
+                  <i class="fa-solid fa-upload"></i>Vyber obrázok               
+               </label>
+               </div>
+
+               <img id="image" src="#" alt="your image" />-->
+
+               <script>
+               /*function preview2() {
+                  var preview = document.getElementById('image');
+                  var file = document.querySelector('input[type=file]').files[0];
+                  var reader1 = new FileReader();
+
+                  reader1.addEventListener("load", function () {
+                     preview.src = reader1.result;
+                  }, false);
+
+                  if (file) {
+                     reader1.readAsDataURL(file);
+                  }
+               }*/
+               </script>
                 <br>
                <br>
                <hr>
@@ -212,11 +256,12 @@ include('../parts/hlava.php');
             </div>
 
             <div class="input-fields">
-            <input type="submit" value="Vytvor recept">
+            <input type="submit" value="Vytvor recept" name="vytvor_recept">
         </div>
         </form>
 
     </div>
 </main>
+
 <script src="../scripts/add_part_of_food.js"></script>
 <script src="../scripts/postup_receptu.js"></script>

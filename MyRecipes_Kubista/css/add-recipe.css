@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    background-color: white;
+    /*background-color: white;*/
     box-sizing: border-box;
 }
 h2{
@@ -126,11 +126,13 @@ input[type=checkbox] {
     font-size: 18px;
     letter-spacing: 1px;
     border-radius: 6px;
-    background: -webkit-linear-gradient(25deg, #8f6a29, #c19237);
+    background-color: #9f772d;
+
     cursor: pointer;
     padding: 1% 2%;
     align-items: middle;
-    
+    color: #fff;
+
 }
 .input-fields {
     text-align: center;
@@ -208,9 +210,9 @@ input[type=checkbox] {
     border: 2px solid #9f772d;
 }
 
-input[type="file"]{
+/*input[type="file"]{
     display: none;
-}
+}*/
 .fa-solid.fa-upload,
 .fa-regular.fa-plus{
     padding-right: 10px;
