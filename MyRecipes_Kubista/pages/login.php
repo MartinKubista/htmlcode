@@ -35,17 +35,8 @@
                         <span class="material-symbols-outlined" class="icon">lock</span>
                     </div>
                     <p class="message"><?php echo $message ?></p>
-                    <div class="checkbox-text">
-                        <div class="checkbox-content">
-                            <input type="checkbox" id="check">
-                            <label for="check" class="text">Zapamätať si</label>
-                        </div>
-
-                        <a href="register.php" class="text1">Zabudnuté heslo?</a>
-                    </div>
-
-                    <div class="input-fields">
-                        <input type="submit" value="Prihlásiť" name="login_user">
+                    <div class="input-fields button">
+                        <input style="color: white;" type="submit" value="Prihlásiť" name="login_user">
                     </div>
                 </form>
                 <div class="not-a-member">

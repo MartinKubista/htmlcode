@@ -61,6 +61,7 @@ $sql_u = "SELECT * FROM users WHERE name='$username'";
 $res_u = mysqli_query($conn, $sql_u);
 
 
+
 if(mysqli_num_rows($res_e) > 0){
     $usernameOrEmailAlreadyExists = true;
     header('Location: ../pages/register.php?message=Email uz bol pouzity');

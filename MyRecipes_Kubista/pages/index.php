@@ -50,10 +50,10 @@
         if (isset($_GET['search'])) {
             $keyword = $_GET['keyword']; 
             if(isset($_SESSION["account"]) && $_SESSION["account"]["user_type"] == 'admin'){
-                $results = mysqli_query($conn, "SELECT * FROM recepty WHERE nazov_receptu LIKE '%$keyword%'");
+                $results = mysqli_query($conn, "SELECT * FROM recepty WHERE CONCAT(nazov_receptu, popis_receptu, options, suroviny) LIKE '%$keyword%'");
             }
             else{
-                $results = mysqli_query($conn, "SELECT * FROM recepty WHERE nazov_receptu LIKE '%$keyword%' AND new_old = 'old'");
+                $results = mysqli_query($conn, "SELECT * FROM recepty WHERE CONCAT(nazov_receptu, popis_receptu, options, suroviny) LIKE '%$keyword%' AND new_old = 'old'");
             }        
             
         }
@@ -85,13 +85,14 @@
                 <?php if ($row['new_old'] == 'new' && isset($_SESSION["account"]) && $_SESSION["account"]["user_type"] == 'admin'): ?>
                     <button class="btn-warning m-2"><a <?php echo $row["nazov_receptu"] ?> href="../pages/recipe.php?recipe=<?php echo $row['recept_id']; ?>"><p class="m-2">NOVÝ RECEPT!</p></a></button>             
                 <?php endif; ?>
+                <?php if ($row['image_data']): ?>
+                    <img class="img-thumbnail main-img" src="../recipes-images/<?= $row['image_data'] ?> ">
+                <?php endif; ?>
                 <h2 class="m-2"> 
                     <a <?php echo $row["nazov_receptu"] ?> href="../pages/recipe.php?recipe=<?php echo $row['recept_id']; ?>"><?= $row["nazov_receptu"] ?></a> 
                 </h2> 
                 <p class="created">Vytvoril: <?php echo $row["username"] ?></p>                  
-                <?php if ($row['image_data']): ?>
-                    <img class="m-3 img-thumbnail main-img" src="../recipes-images/<?= $row['image_data'] ?> ">
-                <?php endif; ?>
+              
                 <div class="article-content"> 
                     <?php
                         $string = strip_tags($row["popis_receptu"]);

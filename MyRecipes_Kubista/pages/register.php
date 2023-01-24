@@ -41,7 +41,7 @@ include('../parts/hlava.php');
                     </div>
                     <p class="message"><?php echo $message ?></p>
                     <div class="input-fields button">
-                        <input type="submit" value="Registrovať">
+                        <input style="color: white;" type="submit" value="Registrovať">
                     </div>
                 </form>
                 <div class="not-a-member">

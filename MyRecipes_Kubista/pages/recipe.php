@@ -123,7 +123,7 @@
             <?php } ?>
             <br>
             <div>
-                <h1>Recenzie</h1>
+                <h1>Komentáre</h1>
 
                 <?php while ($row2 = mysqli_fetch_assoc($record3)) { ?>
                     <?php 

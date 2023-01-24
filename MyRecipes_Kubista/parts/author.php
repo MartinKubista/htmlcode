@@ -37,12 +37,13 @@
     <div class="grid-container">                              
         <?php while ($row = mysqli_fetch_assoc($results)) { ?>
             <div class="grid-item">
-                <h2 class="m-3"> 
+                 <?php if ($row['image_data']): ?>
+                    <img class="img-thumbnail main-img" src="../recipes-images/<?= $row['image_data'] ?> ">
+                <?php endif; ?>
+                <h2 class="m-3 "> 
                     <a <?php echo $row["nazov_receptu"] ?> href="../pages/recipe.php?recipe=<?php echo $row['recept_id']; ?>"><?= $row["nazov_receptu"] ?></a> 
                 </h2>                   
-                <?php if ($row['image_data']): ?>
-                    <img class="m-4 img-thumbnail main-img" src="../recipes-images/<?= $row['image_data'] ?> ">
-                <?php endif; ?>
+
                 <div class="article-content"> 
                     <?php
                         $string = strip_tags($row["popis_receptu"]);

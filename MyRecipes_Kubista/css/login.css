@@ -29,6 +29,7 @@
     position: relative;
     font-size: 27px;
     font-weight: 600;
+    color: black;
 }
 
 /*čiara pod title*/
@@ -96,39 +97,8 @@
 
 
 
-/*vedľa seba*/
-.form .checkbox-text{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
 
-}
 
-/*vycentrovanie*/
-.form .checkbox-text .checkbox-content{
-    display: flex;
-    align-items: center;
-}
-
-/*nastavenie checkboxu*/
-.checkbox-content input{
-    margin: 0 8px -2px 4px;
-    accent-color: #8f6a29;
-}
-
-/*nastavenie farby pisma*/
-.form .text{
-    color: #333;
-    font-size: 14px;
-
-}
-
-/*zrušenie linku podčiarknutia*/
-.form .text1{
-    text-decoration: none;
-    font-size: 14px;
-    
-}
 
 /*nastavenie počiarkuntia pri ukazani*/
 .form a:active,
@@ -170,10 +140,21 @@
 }
 .text{
     margin-top: 2px;
+    color: grey;
+    font-size: 14px;
    
 }
 .message{
     margin-top: 5px;
     color: firebrick;
     font-size: 14px;
+}
+.signup-text{
+    color: #393A3F;
+}
+.form a:active,
+.form a:hover{
+    text-decoration: underline;
+    text-decoration-color: #9f772d;
+    color: #9f772d;
 }

@@ -7,7 +7,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #ccc;
+
+    background-color: #333;
+
 }
 
 .logo-div img{
@@ -18,75 +20,75 @@
 .logo-div{
     margin: 0.5rem;
 }
-.main-div-pad{
+
+.right-hlava {
     display: flex;
     align-items: center;
-    margin-left: 10px;
-    /*border: 1px solid darkgrey;*/
-    margin-right:10px;
-    cursor: pointer;
-    padding: 0px;
-    box-sizing: border-box;
-    display: list-item;
-    list-style-type: none;
-    display: inline-block;
+
+    border-radius: 10px;
 }
-.main-div-pad .sign_in {
-    border: 0;
-    outline: none;
-    font-size: 17px;
-    vertical-align: middle;
+
+.main-div-pad {
+    display: flex;
     align-items: center;
-    margin: 0px;
-    min-width: 90px;
-    
 }
-.main-div-pad .sign_in b{
-    font-weight: normal;
-    vertical-align: middle;
-}
-.main-div-pad a{
-    text-decoration: none;
-    color: black;
-    
-}
-.main-div-new-recipe a{
-    text-decoration: none;
-    color: black;
-    
+
+.photo {
+    border-radius: 50%;
+    height: 30px;
+    width: 40px;
+    margin-right: 5px;
+    border-radius: 30px;
 }
 .main-a{
-    display: inline-block;
-    vertical-align: middle;
-    box-sizing: border-box;
     display: flex;
     align-items: center;
-    justify-content: center;
-
-}
-.main-a span{
-    box-sizing: border-box;
-    display: inline-block;
-    text-align: center;
-
-}
-
-.button-add-recipe{
-    padding: 0 5px;
-    font-size: 17px;
-    
-}
-
-.main-div-new-recipe{
-    /*border: 1px solid darkgrey;*/
-    cursor: pointer;
-    padding: 0px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 28px;
-    display: inline-block;
 }
 .right-hlava{
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+.btn-success1{
+    margin-right: 15px;
+    padding: 6px 5px;
+    border-radius: 15px;
+    background-color: #6B8E23;
+    border: none;
+}
+.btn-info1{
+    margin-right: 15px;
+    padding: 6px 5px;
+    border-radius: 15px;
+    background-color: #8f6a29;
+    border: none;
+
+}
+.btn-photo{
+    margin-right: 15px;
+    padding: 5px;
+    border-radius: 15px;
+    background-color: #8f6a29;
+    border: none;
+    height: 35px;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+
+}
+span{
+    color: white;
+}
+.btn-info1:active,
+.btn-info1:focus {
+    background-color: #286090;
+}
+
+.btn-photo:active,
+.btn-photo:focus {
+    background-color: #286090;
+}
+
+.btn-success1:active,
+.btn-success1:focus {
+    background-color: #286090;
 }

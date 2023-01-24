@@ -8,18 +8,6 @@
     <script src="https://kit.fontawesome.com/cfb876ecbd.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/main.css"> 
-    <style> 
-      .fa-trash {
-         color: #9f772d;
-         margin-left: 10px;
-         border: none;
-            }  
-      .fa-upload,
-      .fa-plus{
-         background-color: #9f772d;
-         color: #fff;
-      }
-    </style>
 </head>
 <main>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -46,126 +34,47 @@
                 <textarea class="textarea-uvod" name="popis-receptu" id="popis-receptu" placeholder="Sem napíšte stručný popis receptu"></textarea>
             </div>
             <br>
+            
             <br>
             <hr>
+            <br>
             <div class="title">
                <h2>Suroviny</h2>
             </div>
-            <!-- <div class="label-input-group">
-            <div class="listHolder">
-                  <ul class="list" id="list">-->
-                     <!--  <li class="li_input" id="li_input">
-                     <span id="addInput1"  class="span-suroviny" ></span>
-                        <button class="fa-solid fa-trash"></button>
-                     </li>-->
-                <!--  
-               </ul >
-            </div>
-            <div class="formHolder">
-               <div class="col big">
-                  <input placeholder="Zadaj surovinu." class="input_suroviny" type="text" id="addInput">
-                  <input placeholder="Zadaj množstvo." class="input_suroviny" type="text" id="addInput2">
-                  <input placeholder="Zadaj jednotku." class="input_suroviny" type="text" id="addInput3">
-               </div>
-               <div class="col">
-                  <button type="button" class="addBtn" id="addBtn" ><i class="fa-regular fa-plus"></i>Pridaj</button>
-               </div>
-            </div>
-            </div>-->
             <div class="label-input-group">
                 <p>
                 <textarea class="textarea-uvod" name="suroviny" id="suroviny" placeholder="Sem zadajte suroviny a k nim množstvo"></textarea>
+                <small class="small">Suroviny zadávajte v tvare jednotka množstvo surovina a oddeľujte čiarkou(1 kus maslo, 0.5 kg múky)</small>
             </div>
             <br>
             <br>
-            <hr>
-                        <div class="title">
-                           <h2>Postup receptu</h2>
-                           Pridáva sa po vytvorení receptu 
-                        </div>
-                        
-                        <!--
-                        <div class="label-input-group">
-                        <div class="listHolder1">
-                              <ul class="list1" id="list1">-->
-                                 <!--  <li class="li_input" id="li_input">
-                                 <span id="addInput1"  class="span-suroviny" ></span>
-                                    <button class="fa-solid fa-trash"></button>
-                                 </li>-->
-                          <!-- </ul >
-                        </div>
-                        <div class="formHolder1">
-                              <textarea placeholder="Sem napíšte bod receptu" class="textarea-postup" id="addInput1" name="postup[]" cols="100" rows="5"></textarea>
-                              <div class="col">
-                                 <button type="button" class="addBtn1" id="addBtn1" ><i class="fa-regular fa-plus"></i>Pridaj</button>
-                              </div>
-                              <div id="images1"></div>
-                              <input type="file" id="file-input" accept="image/png, image/jpg, image/jpeg" onchange="preview()" multiple>
-                              <label for="file-input" class="file-input1">
-                                 <i class="fa-solid fa-upload"></i>Vyber obrázky                
-                           </label>
-                           <small id="num-of-files">Zatiať si nevybral žiadne obrázky</small>           
-                        </div>
-                           <br>
-                           <br>
-                        </div>
-            <br>-->
+
             <br>
             <hr>
+            <br>
+
+                        <div class="title">
+                           <h2>Postup receptu</h2>
+
+                        </div>
+
+                        <div class="label-input-group">
+                        <label class="label-uvod" for="">Pridáva sa po vytvorení receptu </label>
+                        </div>
+                        <br>
+                        
+                     
+            <br>
+            <br>
+            
+            <hr>
+            <br>
             <div class="title">
                 <h2>Kategória receptu</h2>
             </div>
             <div class="label-input-group">
                 <div class="typ-jedla"></div>
                     <lable class="kategoria-subtitle">Typ jedla</label>
-                            <!--<div id="polievky" onclick="">
-                               <input type="checkbox" name="options[]" value="polievky" id="polievky">
-                               <label for="polievky"><b>Polievky</b></label> 
-                            </div>
-                            <div id="cestoviny" onclick="">
-                               <input type="checkbox" name="options[]" value="cestoviny" id="cestoviny">
-                               <label for="cestoviny"><b>Cestoviny</b></label> 
-                            </div>
-                            <div id="jedla-z-hub" onclick="">
-                               <input type="checkbox" name="options[]" value="jedla-z-hub" id="jedla-z-hub">
-                               <label for="jedla-z-hub"><b>Jedlá z húb</b></label> 
-                            </div>
-                            <div id="mäsite-jedla" onclick="">
-                               <input type="checkbox" name="options[]" value="mäsite-jedla" id="mäsite-jedla">
-                               <label for="mäsite-jedla"><b>Mäsité jedlá</b></label> 
-                            </div>
-                            <div id="bezmäsite-jedla" onclick="">
-                               <input type="checkbox" name="options[]" value="bezmäsite-jedla" id="bezmäsite-jedla">
-                               <label for="bezmäsite-jedla"><b>Bezmäsité jedlá</b></label> 
-                            </div>
-                            <div id="jedla-z-ryb" onclick="">
-                               <input type="checkbox" name="options[]" value="jedla-z-ryb" id="jedla-z-ryb">
-                               <label for="jedla-z-ryb"><b>Jedlá z rýb</b></label> 
-                            </div>
-                            <div id="kolace-a-dezerty" onclick="">
-                               <input type="checkbox" name="options[]" value="kolace-a-dezerty" id="kolace-a-dezerty">
-                               <label for="kolace-a-dezerty"><b>Koláče a dezerty</b></label> 
-                            </div>
-                            <div id="torty" onclick="">
-                               <input type="checkbox" name="options[]" value="torty" id="torty">
-                               <label for="torty"><b>Torty</b></label> 
-                            </div>
-                            <div id="ovocne-jedla" onclick="">
-                               <input type="checkbox" name="options[]" value="ovocne-jedla" id="ovocne-jedla">
-                               <label for="ovocne-jedla"><b>Ovocné jedlá</b></label> 
-                            </div>
-                            <div id="zeleninove-jedla" onclick="">
-                               <input type="checkbox" name="options[]" value="zeleninove-jedla" id="zeleninove-jedla">
-                               <label for="zeleninove-jedla"><b>Zeleninové jedlá</b></label> 
-                            </div>
-                            <div id="natierky" onclick="">
-                               <input type="checkbox" name="options[]" value="natierky" id="natierky">
-                               <label for="natierky"><b>Nátierky</b></label> 
-                            </div>
-                            <div id="napoje" onclick="">
-                               <input type="checkbox" name="options[]" value="napoje" id="napoje">
-                               <label for="napoje"><b>Nápoje</b></label> 
-                            </div>-->
                            <select name="options" id="options">
                               <option value="">Vyber typ jedla</option>
                               <option value="Polievky">Polievky</option>
@@ -188,37 +97,30 @@
                 <br>
                 <br>
                 <hr>
+                <br>
+
                 <div class="title">
                     <h2>Hlavná fotografia k receptu</h2>
                     
                 </div>
+                <br>
+
                 <div class="profile-pic-div">
-               <input type="file" id="file-input1" accept="image/*" onchange="preview2()" multiple="false" name="recipes-images" value="">
-               <!--<label for="file-input" class="file-input1">
-                  <i class="fa-solid fa-upload"></i>Vyber obrázok               
-               </label>
+                        <label for="file-input" class="file-input1">
+                           <i class="fa-solid fa-upload"></i>Vyber obrázok    
+                           <input type="file" id="file-input" accept="image/*" onchange="previewImage(this)" multiple="false" name="recipes-images" value="">           
+                        </label>
+                        <script src="../scripts/show_image.js"></script>
                </div>
+               <img id="preview" src="" alt="" >
 
-               <img id="image" src="#" alt="your image" />-->
-
-               <script>
-               /*function preview2() {
-                  var preview = document.getElementById('image');
-                  var file = document.querySelector('input[type=file]').files[0];
-                  var reader1 = new FileReader();
-
-                  reader1.addEventListener("load", function () {
-                     preview.src = reader1.result;
-                  }, false);
-
-                  if (file) {
-                     reader1.readAsDataURL(file);
-                  }
-               }*/
-               </script>
+               <br>
+               <br>
                 <br>
                <br>
                <hr>
+               <br>
+
                <div class="title">
                      <h2>Podrobnosti k receptu</h2>
                </div>
@@ -254,6 +156,7 @@
                <hr>
 
             </div>
+            <br>
 
             <div class="input-fields">
             <input type="submit" value="Vytvor recept" name="vytvor_recept">

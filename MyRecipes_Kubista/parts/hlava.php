@@ -4,18 +4,11 @@
     <link href="../css/header.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/fonts.css">  
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/main.css"> 
-</head>
-<style>
-    .btn-success, .btn-info{
-        border-radius: 12px;
-    }
-    .btn-success a, .btn-info a{
-        color: white;
-    }
-</style>
 
+</head>
 <?php 
 //session_start();
     require_once('../scripts/users.php');
@@ -32,9 +25,8 @@
         <div class="logo-div">
             <a href="../pages/index.php"  ><img class="logo"src="../images/MyRecipes-logo1.PNG" alt="MyRecipes"></a>
         </div>
-
         <?php if (!isset($_SESSION["account"])) : ?>
-        <button class="btn-info">
+        <button class="btn-info1">
             <div class="main-div-pad">
                 <a href="../pages/login.php" class="main-a">
                     <span class="material-symbols-outlined md-48">person</span>
@@ -43,9 +35,12 @@
             </div>
         </button>
         <?php else: ?>
+            
+            <span class="material-symbols-outlined md40">menu</span>
+
             <div class="right-hlava">
-                <button class="btn-success">
-                    <div class="main-div-new-recipe">                    
+                <button class="btn-success1">
+                    <div class="main-div-pad">                    
                         <a href="../pages/add-recipe.php" class="main-a">
                             <span class="material-symbols-outlined">add</span>
                             <span  class="button-add-recipe">Pridaj recept</span>
@@ -53,14 +48,14 @@
                     </div>
                 </button>
 
-                <button class="btn-info">
+                <button class="btn-photo">
                     <div class="main-div-pad">
                             <?php /*include('../scripts/session.php');*/?>
                             <a href="../parts/profile.php?user=<?php echo $_SESSION["account"]["name"]; ?>" class="main-a">
                                 <?php while ($row = mysqli_fetch_assoc($record)) { 
                                     if($row["avatar"]):
                                 ?>                                   
-                                    <img src="../profile-photos/<?= $row["avatar"] ?>" alt="" class="photo mt-1">
+                                    <img src="../profile-photos/<?= $row["avatar"] ?>" alt="" class="photo">
                                 <?php
                                     endif;
                                 } ?>
@@ -68,15 +63,20 @@
                             </a>
                     </div>
                 </button>
-            </div>
-            
-            <div class="main-div-pad">
-                <button class="btn-info">
-                    <a href="../scripts/logout.php" class="main-a">                           
+
+                <button class="btn-info1" tabindex="1">
+                    <div class="main-div-pad">
+                    <a href="../scripts/logout.php" class="main-a"> 
+                        <span class="material-symbols-outlined md-48">logout</span>                          
                         <span class="sign_in">Odhlásiť sa</span>
                     </a>
+                    </div>
                 </button> 
+
+
             </div>
+            
+
             
         <?php endif; ?>
     </div>

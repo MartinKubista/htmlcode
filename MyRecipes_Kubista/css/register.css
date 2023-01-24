@@ -29,6 +29,8 @@
     position: relative;
     font-size: 27px;
     font-weight: 600;
+    color: black;
+
 }
 
 /*čiara pod title*/
@@ -99,7 +101,7 @@
 
 /*nastavenie farby pisma*/
 .form .text{
-    color: #333;
+    color: grey;
     font-size: 14px;
 
 }
@@ -139,6 +141,7 @@
 .not-a-member{
     margin-top: 30px;
     text-align: center;
+    
 
 }
 
@@ -149,4 +152,13 @@
     margin-top: 5px;
     color: firebrick;
     font-size: 14px;
+}
+.signup-text{
+    color: #393A3F;
+}
+.form a:active,
+.form a:hover{
+    text-decoration: underline;
+    text-decoration-color: #9f772d;
+    color: #9f772d;
 }

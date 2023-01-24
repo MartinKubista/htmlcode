@@ -55,7 +55,7 @@ h2{
     border: 2px solid #9f772d;
 }
 .title{
-    margin-top: 70px;
+    margin: 0px;
 }
 .title-1{
     margin-top: 40px;
@@ -228,8 +228,10 @@ input[type=checkbox] {
     padding: 10px 0px;
     border-radius: 4px;
     cursor: pointer;
-    margin-left: 20px;
     margin-top: 10px;
+}
+.file-input1:hover{
+    opacity: 0.9;
 }
 #images1{
     width: 90%;
@@ -253,3 +255,6 @@ figcaption{
 
 }
 
+.profile-pic-div input{
+    display: none;
+}
