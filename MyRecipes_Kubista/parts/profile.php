@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/main.css"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/cfb876ecbd.js" crossorigin="anonymous"></script>
     <title>Profil</title>
 </head>
 <body>
@@ -27,18 +29,23 @@
         <?php while ($row = mysqli_fetch_assoc($result)) { ?>
             <?php if ($result): ?>
                 <?php if ($row['avatar']): ?>
-                    <img src="../profile-photos/<?= $row['avatar'] ?>" alt="" class="avatar">
+                    <div class="img_container">
+                        <img src="../profile-photos/<?= $row['avatar'] ?>" alt="" class="avatar">
+                    </div>
                 <?php endif; ?>
                 <div class="forms">
 
                     <form action="" method="post" class="profile" enctype="multipart/form-data">
                         <fieldset>Profilová fotka</fieldset>    
-                        <label>Obrázok</label>
-                        <input type="file" name="profile-photos" value=""> 
-                        
+                        <label for="file-input" class="file-input1">
+                            <i class="fa-solid fa-upload"></i>Vyber obrázok    
+                            <input class="input_img" type="file" id="file-input" accept="image/*"  onchange="previewImage(this)" multiple="false" name="profile-photos" value="">           
+                        </label>
+                        <script src="../scripts/show_image.js"></script>
+                        <img class="profile_change_img" id="preview" src="" alt="" >
                         <input type="hidden" name="user" value="<?php echo $_SESSION["account"]["name"]; ?>">                                                  
                         
-                        <button class="submit" name="add-avatar">Zmeniť profilovú fotku</button>
+                        <button class="submit one" name="add-avatar">Zmeniť profilovú fotku</button>
                     </form>                                  
 
                     <form action="" method="post" class="profile">
@@ -49,11 +56,15 @@
                             <section class="error">Nové heslo musí byť iné ako staré</section>
                         <?php endif;?>
                         <fieldset>Zmena hesla</fieldset> 
+                        <div class="centre-input">
                         <input type="text" name="old" value="" placeholder="Zadaj staré heslo">    
-                        <input type="text" name="new" value="" placeholder="Zadaj nové heslo">                     
+                        </div>
+                        <div class="centre-input">
+                        <input type="text" name="new" value="" placeholder="Zadaj nové heslo">     
+                        </div>                
                         <input type="hidden" name="user" value="<?php echo $_SESSION["account"]["name"]; ?>">                                                  
                         
-                        <button class="submit" name="change-password">Zmeniť heslo</button>
+                        <button class="submit two" name="change-password">Zmeniť heslo</button>
                     </form>
                 </div> 
                 
@@ -68,10 +79,19 @@
                     <?php if ($row['image_data']): ?>
                         <img class="img-thumbnail main-img" src="../recipes-images/<?= $row['image_data'] ?> ">
                     <?php endif; ?>
-                    <h2 class="m-3"> 
-                        <a <?php echo $row["nazov_receptu"] ?> href="../pages/recipe.php?recipe=<?php echo $row['recept_id']; ?>"><?= $row["nazov_receptu"] ?></a> 
-                    </h2>                   
-                    
+                    <h2 class="m-2 "> 
+                        <a href="../pages/recipe.php?recipe=<?php echo $row['recept_id']; ?>">
+                            <?php 
+                            $recipeTitle = $row["nazov_receptu"]; 
+                            if (strlen($recipeTitle) > 42) {
+                                echo substr($recipeTitle, 0, 39) . "...";
+                            } else {
+                                echo $recipeTitle;
+                            }
+                            ?>
+                        </a> 
+                    </h2>
+                        
                     <div class="article-content"> 
                         <?php
                             $string = strip_tags($row["popis_receptu"]);

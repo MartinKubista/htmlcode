@@ -23,7 +23,7 @@
 <header>
     <div class="main-div">
         <div class="logo-div">
-            <a href="../pages/index.php"  ><img class="logo"src="../images/MyRecipes-logo1.PNG" alt="MyRecipes"></a>
+            <a href="../pages/index.php"  ><img class="logo"src="../images/MyRecipes-logo1.jpg" alt="MyRecipes"></a>
         </div>
         <?php if (!isset($_SESSION["account"])) : ?>
         <button class="btn-info1">
@@ -34,9 +34,12 @@
                 </a>
             </div>
         </button>
+
+       
+
         <?php else: ?>
             
-            <span class="material-symbols-outlined md40">menu</span>
+          
 
             <div class="right-hlava">
                 <button class="btn-success1">
@@ -50,7 +53,6 @@
 
                 <button class="btn-photo">
                     <div class="main-div-pad">
-                            <?php /*include('../scripts/session.php');*/?>
                             <a href="../parts/profile.php?user=<?php echo $_SESSION["account"]["name"]; ?>" class="main-a">
                                 <?php while ($row = mysqli_fetch_assoc($record)) { 
                                     if($row["avatar"]):
@@ -59,7 +61,7 @@
                                 <?php
                                     endif;
                                 } ?>
-                                <span class="sign_in"<?php  /*echo "?user=".$id;*/?>><?php echo $_SESSION["account"]["name"]; ?>                               
+                                <span class="sign_in"><?php echo $_SESSION["account"]["name"]; ?>                               
                             </a>
                     </div>
                 </button>
@@ -72,10 +74,15 @@
                     </a>
                     </div>
                 </button> 
-
+               
 
             </div>
-            
+            <label class="hamburger" for="toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </label>
+            <script src="../scripts/header_hamburger.js"></script>
 
             
         <?php endif; ?>

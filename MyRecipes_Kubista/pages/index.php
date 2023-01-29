@@ -88,11 +88,21 @@
                 <?php if ($row['image_data']): ?>
                     <img class="img-thumbnail main-img" src="../recipes-images/<?= $row['image_data'] ?> ">
                 <?php endif; ?>
-                <h2 class="m-2"> 
-                    <a <?php echo $row["nazov_receptu"] ?> href="../pages/recipe.php?recipe=<?php echo $row['recept_id']; ?>"><?= $row["nazov_receptu"] ?></a> 
-                </h2> 
-                <p class="created">Vytvoril: <?php echo $row["username"] ?></p>                  
-              
+
+
+                <h2 class="m-2 "> 
+                    <a href="../pages/recipe.php?recipe=<?php echo $row['recept_id']; ?>">
+                        <?php 
+                        $recipeTitle = $row["nazov_receptu"]; 
+                        if (strlen($recipeTitle) > 42) {
+                            echo substr($recipeTitle, 0, 39) . "...";
+                        } else {
+                            echo $recipeTitle;
+                        }
+                        ?>
+                    </a> 
+                </h2>
+                         
                 <div class="article-content"> 
                     <?php
                         $string = strip_tags($row["popis_receptu"]);

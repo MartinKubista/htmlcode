@@ -36,8 +36,6 @@ $_SESSION['em'] = $_POST['email'];
 $_SESSION['user'] = $_POST['name'];
 $_SESSION['pass'] = $_POST['password'];
 
-
-
 if($_POST["password"] == $_POST["password-r"]){
     $passwordAreSame = true;
 }
@@ -71,7 +69,6 @@ if(mysqli_num_rows($res_u) > 0){
     header('Location: ../pages/register.php?message=Uzivatelske meno je uz obsadene');
 }
 if($isEmpty == false && $hasPasswordCertainLength && $hasPasswordAtLeastOneNumber == true && $passwordAreSame == true && $usernameOrEmailAlreadyExists == false){
-    //$hash = md5($_POST["password"]);
     $sql = "INSERT INTO users (name, email, password) 
     VALUES('$username', '$email', '$password')";
     if ($conn->query($sql) == true){       

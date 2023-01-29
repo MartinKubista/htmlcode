@@ -21,9 +21,16 @@
     <?php 
         if (isset($_GET['user'])) {
             $user = $_GET['user'];
-            $results = mysqli_query($conn, "SELECT * FROM recepty WHERE username = '$user'");   
+            if(isset($_SESSION["account"]) && $_SESSION["account"]["user_type"] == 'admin'){
+                $results = mysqli_query($conn, "SELECT * FROM recepty WHERE username = '$user' ORDER BY date_of_create DESC");
+            }
+            else{
+                $results = mysqli_query($conn, "SELECT * FROM recepty WHERE new_old = 'old' && username = '$user' ORDER BY date_of_create DESC");
+            }  
             $results2 = mysqli_query($conn, "SELECT * FROM users WHERE name = '$user'");                           
         }
+
+        
     ?>
 
     <h1 class="title">Recepty užívateľa <?= $user ?>
@@ -37,13 +44,22 @@
     <div class="grid-container">                              
         <?php while ($row = mysqli_fetch_assoc($results)) { ?>
             <div class="grid-item">
-                 <?php if ($row['image_data']): ?>
-                    <img class="img-thumbnail main-img" src="../recipes-images/<?= $row['image_data'] ?> ">
+                <?php if ($row['image_data']): ?>
+                    <img class=" img-thumbnail main-img" src="../recipes-images/<?= $row['image_data'] ?> ">
                 <?php endif; ?>
-                <h2 class="m-3 "> 
-                    <a <?php echo $row["nazov_receptu"] ?> href="../pages/recipe.php?recipe=<?php echo $row['recept_id']; ?>"><?= $row["nazov_receptu"] ?></a> 
-                </h2>                   
-
+                <h2 class="m-2 "> 
+                    <a href="../pages/recipe.php?recipe=<?php echo $row['recept_id']; ?>">
+                        <?php 
+                        $recipeTitle = $row["nazov_receptu"]; 
+                        if (strlen($recipeTitle) > 42) {
+                            echo substr($recipeTitle, 0, 39) . "...";
+                        } else {
+                            echo $recipeTitle;
+                        }
+                        ?>
+                    </a> 
+                </h2>              
+              
                 <div class="article-content"> 
                     <?php
                         $string = strip_tags($row["popis_receptu"]);

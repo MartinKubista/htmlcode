@@ -7,8 +7,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     background-color: #333;
+
 
 }
 
@@ -25,7 +25,7 @@
     display: flex;
     align-items: center;
 
-    border-radius: 10px;
+    
 }
 
 .main-div-pad {
@@ -47,48 +47,114 @@
 .right-hlava{
     display: flex;
     justify-content: space-between;
+  
 }
 .btn-success1{
-    margin-right: 15px;
-    padding: 6px 5px;
-    border-radius: 15px;
-    background-color: #6B8E23;
+
     border: none;
+    background-color: #333;
+    margin-right: 15px;
+
+
 }
 .btn-info1{
-    margin-right: 15px;
-    padding: 6px 5px;
-    border-radius: 15px;
-    background-color: #8f6a29;
+
     border: none;
+    background-color: #333;
+    margin-right: 15px;
+
 
 }
 .btn-photo{
-    margin-right: 15px;
     padding: 5px;
-    border-radius: 15px;
-    background-color: #8f6a29;
     border: none;
     height: 35px;
     vertical-align: middle;
     display: flex;
     align-items: center;
-
+    background-color: #333;
+    margin-right: 15px;
 }
 span{
     color: white;
 }
-.btn-info1:active,
-.btn-info1:focus {
-    background-color: #286090;
+.btn-info1 a:active span,
+.btn-info1 a:focus span,
+.btn-info1 a:hover span{
+    color: #9f772d;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+}
+.btn-success1 a:active span,
+.btn-success1 a:focus span,
+.btn-success1 a:hover span{
+    color: #9f772d;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+}
+.btn-photo a:active span,
+.btn-photo a:focus span,
+.btn-photo a:hover span{
+    color: #9f772d;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+}
+.hamburger:active .bar,
+.hamburger:focus .bar,
+.hamburger:hover .bar{
+    background-color: #9f772d;
+}
+.hamburger{
+    display: none;
+    cursor: pointer;
+    margin-right: 15px;
+}
+.bar{
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: white;
 }
 
-.btn-photo:active,
-.btn-photo:focus {
-    background-color: #286090;
-}
+@media (max-width: 700px) {
+    .hamburger{
+        display: block;
+    }
+    
+    .hamburger.active .bar:nth-child(2){
+        opacity: 0;
+    }
 
-.btn-success1:active,
-.btn-success1:focus {
-    background-color: #286090;
+    .hamburger.active .bar:nth-child(1){
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3){
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    .right-hlava{
+        position: fixed;
+        left: -100%;  
+        top:57px;
+        gap: 0;
+        flex-direction: column;
+        background-color: #333;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        z-index: 1;
+
+    }
+    .btn-info1,
+    .btn-success1,
+    .btn-photo{
+        margin: 16px 0;
+    }
+    .right-hlava.active{
+        left: 0;
+    }
 }

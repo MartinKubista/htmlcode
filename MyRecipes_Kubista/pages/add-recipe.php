@@ -18,6 +18,7 @@
    include('../parts/hlava.php');
 
 ?>
+<?php $message = isset($_GET["message"]) ? $_GET["message"] : "";?>
     <div class="margin">
         <form action="" method="POST" enctype="multipart/form-data">
             <div class="title-1">
@@ -52,18 +53,14 @@
             <br>
             <hr>
             <br>
-
-                        <div class="title">
-                           <h2>Postup receptu</h2>
-
-                        </div>
-
-                        <div class="label-input-group">
-                        <label class="label-uvod" for="">Pridáva sa po vytvorení receptu </label>
-                        </div>
-                        <br>
-                        
-                     
+                <div class="title">
+                    <h2>Postup receptu</h2>
+                </div>
+                <div class="label-input-group">
+                <label class="label-uvod" for="">Pridáva sa po vytvorení receptu </label>
+                </div>
+                <br>
+   
             <br>
             <br>
             
@@ -91,8 +88,6 @@
                               <option value="Nápoje">Nápoje</option>
                            </select>
                             <br>
-
-
                 </div>
                 <br>
                 <br>
@@ -100,8 +95,7 @@
                 <br>
 
                 <div class="title">
-                    <h2>Hlavná fotografia k receptu</h2>
-                    
+                    <h2>Hlavná fotografia k receptu</h2>       
                 </div>
                 <br>
 
@@ -113,14 +107,12 @@
                         <script src="../scripts/show_image.js"></script>
                </div>
                <img id="preview" src="" alt="" >
-
                <br>
                <br>
                 <br>
                <br>
                <hr>
                <br>
-
                <div class="title">
                      <h2>Podrobnosti k receptu</h2>
                </div>
@@ -154,10 +146,9 @@
                </div>
                <br>
                <hr>
-
             </div>
             <br>
-
+            <p class="message"><?php echo $message ?></p>
             <div class="input-fields">
             <input type="submit" value="Vytvor recept" name="vytvor_recept">
         </div>

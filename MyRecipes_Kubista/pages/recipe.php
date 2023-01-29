@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/main.css"> 
     <title>Recept</title>
@@ -38,19 +38,10 @@
             $new_old = $n['new_old'];
 
             $record2 = mysqli_query($conn, "SELECT * FROM images WHERE recept_id=$id");
-            //$n2 = mysqli_fetch_array($record2);
-            /*if($n2){
-                $img2 = $n2['array_image'];
-                $description = $n2['postup'];
-            }*/
+
 
             $record3 = mysqli_query($conn, "SELECT * FROM reviews WHERE recept_id = $id");
-            //$n3 = mysqli_fetch_array($record3);
-            /*if($n3){
-                $username_review = $n3['username'];
-                $review = $n3['review'];
-                $date_review = $n3['datetime'];  
-            }  */    
+
             $record4 = mysqli_query($conn, "SELECT * FROM users WHERE name = '$user'");            
         }
     ?>
@@ -69,11 +60,6 @@
             <?php endif; ?>
 
             <h1><?= $nazov ?></h1>
-            <!--<?php  /*if (isset($_SESSION["account"]) && $_SESSION["account"]["name"] == $user): ?>
-                <button class="btn btn-success edit-info" style="border-radius: 15px;">
-                    <a href="add-postup.php?edit=<?php echo $id; ?>">Pridať postup práce <i class="fa fa-edit"></i></a> 
-                </button>
-            <?php endif;*/ ?>-->
             <div class="/*mt-4*/" style="margin-left: 1.5%;">
                 <i class="far fa-calendar-alt"></i> Pridané: 
                 <?php
@@ -81,7 +67,8 @@
                     $cr_date=date_create($datetime);
                     $for_date=date_format($cr_date,'d.m.Y');                                
                     echo $for_date; 
-                ?>                                    
+                ?>     
+                                               
             </div>  
             <?php if($img): ?>
                 <img src="../recipes-images/<?= $img ?>" class="main-img">
@@ -90,20 +77,47 @@
             <div class="popis">
                 <p><?= $content ?></p>
             </div>
-
+            <hr>
             <?php if($priprava || $varenie || $teplota || $porcie): ?>
-            <div class="grid">
-                <?php if($priprava): ?><i class="color-silver fas fa-clock" aria-hidden="true"> <span>Príprava: <?= $priprava ?> min</span></i><?php endif; ?>  
-                <?php if($varenie): ?><i class="color-silver fas fa-fire-alt" aria-hidden="true"> <span>Tepelná príprava: <?= $varenie ?> min</span></i><?php endif; ?>    
-                <?php if($teplota): ?><i class="fas fa-temperature-high"> <span>Teplota: <?= $teplota ?>°C</span></i><?php endif; ?>  
-                <?php if($porcie): ?><i class="fa fa-smile"> <span>Počet porcií: <?= $porcie ?></span></i><?php endif; ?>
-            </div>
+                <div class="grid d-flex justify-content-center">
+                <?php  if($porcie && !empty($porcie)):  ?>
+                    <i class="d-flex align-items-center ">
+                    <span class="material-symbols-outlined mr-2" style="font-size: 45px; padding-right: 3%">restaurant</span>
+                    <div class="d-flex flex-column" style="width: 80px;" >
+                        <span><?= $porcie ?></span>
+                        <span>porcie</span>
+                    </div>
+                    </i>
+                <?php endif; ?>
+                <?php if($priprava && !empty($priprava)): ?>
+                    <i class="d-flex align-items-center ">
+                    <span class="material-symbols-outlined mr-2" style="font-size: 45px;padding-right: 3%">schedule</span>
+                    <div class="d-flex flex-column" style="width: 80px;" >
+                        <span><?= $priprava ?> minút</span>
+                        <span>príprava</span>
+                    </div>
+                    </i>        
+                <?php endif; ?>  
+                <?php if($varenie && !empty($varenie)): ?>
+                    <i class="d-flex align-items-center ">
+                    <span class="material-symbols-outlined mr-2" style="font-size: 45px;padding-right: 3%">local_fire_department</span>
+                    <div class="d-flex flex-column" style="width: 80px;">
+                        <span><?= $varenie ?> minút</span>
+                        <?php if($teplota && !empty($teplota)): ?>
+                        <span class="">na <span><?= $teplota ?>°C</span></span>
+                        <?php endif; ?>
+                    </div>
+                    </i>
+                <?php endif; ?>    
+                </div>
             <?php endif; ?>
-            
+            <hr>
+            <br>
+            <br>
             <ol>
                 <?php while ($row = mysqli_fetch_assoc($record2)) { ?>              
                     <li>            
-                        <br>
+                        
                         <?= $row["postup"] ?>
                         <br>
                         <img src="../recipes-images/postup-images/<?= $row["array_image"] ?>" alt="" class="main-img">                       
@@ -114,40 +128,43 @@
             <p class="suroviny">Suroviny: <?= $suroviny ?></p>
 
             <?php while ($row3 = mysqli_fetch_assoc($record4)) { ?>
-            <p> Autor: 
+                <p> Autor: 
                 <a href="../parts/author.php?user=<?= $user ?>">
+                    <?php if (!empty($row3["avatar"])): ?>
                     <img src="../profile-photos/<?= $row3["avatar"] ?>" alt="" class="photo">
+                    <?php endif; ?>
                     <?= $user ?>
                 </a> 
-            </p>
+                </p>
             <?php } ?>
             <br>
             <div>
                 <h1>Komentáre</h1>
 
                 <?php while ($row2 = mysqli_fetch_assoc($record3)) { ?>
-                    <?php 
+                <?php 
                     $review_author = $row2["username"];
                     $record5 = mysqli_query($conn, "SELECT * FROM users WHERE name = '$review_author'");
-                        while ($row4 = mysqli_fetch_assoc($record5)) {
-                    ?>
-                    <div class="review"> 
+                    while ($row4 = mysqli_fetch_assoc($record5)) {
+                ?>
+                <div class="review"> 
                     <a href="../parts/author.php?user=<?= $row2["username"] ?>" class="review-author">     
+                    <?php if (!empty($row4["avatar"])): ?>
                         <img src="../profile-photos/<?= $row4["avatar"] ?>" alt="" class="photo">                 
-                        <span class="m-1"><?= $row2["username"] ?></span>                       
+                    <?php endif; ?>
+                    <span class="m-1"><?= $row2["username"] ?></span>                       
                     </a>
-                    <?php } ?>
-                        <p><i class="far fa-calendar-alt" aria-hidden="true"></i>
-                            <?php
-                                $time = "SELECT datetime FROM reviews";
-                                $cr_date=date_create($row2['datetime']);
-                                $for_date=date_format($cr_date,'d.m.Y');                                
-                                echo $for_date; 
-                            ?>
-                        </p>
-                        <p><?= $row2["review"] ?></p>
-                    </div>
-                <?php } ?>
+                    <p><i class="far fa-calendar-alt" aria-hidden="true"></i>
+                    <?php
+                        $time = "SELECT datetime FROM reviews";
+                        $cr_date=date_create($row2['datetime']);
+                        $for_date=date_format($cr_date,'d.m.Y');                                
+                        echo $for_date; 
+                    ?>
+                    </p>
+                    <p><?= $row2["review"] ?></p>
+                </div>
+                <?php }} ?>
 
                 <?php  if (isset($_SESSION["account"])): ?>
                     <form action="" class="form-review" method="post">

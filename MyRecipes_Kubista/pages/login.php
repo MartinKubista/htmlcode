@@ -21,9 +21,6 @@
    <div class="form-container">
         <div class="padding-setting">
             <div class="form login">
-                <?php if($error["form"]): ?>
-                    <section class="error">Vyplň správne prihlasovacie údaje</section>
-                <?php endif;?>
                 <span class="title">Prihlásenie</span>
                 <form action="" method="post">
                     <div class="input-fields">
@@ -34,7 +31,9 @@
                         <input type="password" class="password" placeholder="Zadaj svoje heslo" id="password" name="password" required>
                         <span class="material-symbols-outlined" class="icon">lock</span>
                     </div>
-                    <p class="message"><?php echo $message ?></p>
+                    <?php if($error["form"]): ?>
+                    <section class="message">Vyplň správne prihlasovacie údaje</section>
+                    <?php endif;?>
                     <div class="input-fields button">
                         <input style="color: white;" type="submit" value="Prihlásiť" name="login_user">
                     </div>
